@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=Neo, initial-scale=1.0">
+  <title>deepvision</title>
+  <link href="{% static 'DeepVision/index.css' %}" rel='stylesheet'>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- fontawosame -->
+  <script src="https://kit.fontawesome.com/e161c760f2.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="tabs">
+    <div class="tabs__head" data-aos="fade-down">
+      <div class="tabs__toggle is-active">
+        <span class="tabs__name">Description</span>
+      </div>
+      <div class="tabs__toggle">
+        <span class="tabs__name">Test</span>
+      </div>
+      <div class="tabs__toggle">
+        <span class="tabs__name">Contact</span>
+      </div>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="tabs__body">
+      <div class="tabs__content is-active">
+        <div class="content">
+          <div class="logo" data-aos="flip-left">
+            <img src="{% static 'DeepVision/images/logo.png' %}">
+          </div>
+          <div class="text" data-aos="zoom-in-up">
+            <h2 class="tabs__title">Description</h2>
+            <p class="tabs__text">
+              Glaucoma is a group of eye diseases that can cause vision loss and blindness by damaging a nerve in the
+              back of the eye called
+              the optic nerve.
+              The symptoms can start so slowly that they may not be noticed.The only way to diagnose glaucoma is a
+              comprehensive dilated eye exam.
+              There is no cure for glaucoma, but early treatment can often stop the damage and protect the vision.
+            </p>
+            <br>
+            <h3>Our main goal:</h3>
+            <br>
+            <ol>
+              <li>Detect glaucoma at early stages so patient vision can be protected.</li>
+              <li>Avoiding the complete blindness caused by glaucoma.</li>
+            </ol>
+            <br>
+            <p>So We created this project to build up an easy , reliable and accurate glaucoma diagnostic system based
+              on deep learning
+              approach as it takes a funds image and then return the result if positive or negative.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="tabs__content">
+        <h2 class="tabs__title">Test</h2>
+        {% if test %}
+        <form action="" class="form" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% for field in form %}
+          {{field}}
+          {{field.errors}}
+          {% endfor %}
+          <button type="submit">Submit</button>
+          {% else %}
+          <div id="class-img">
+            <img src="{{image.url}}" alt="">
+            <p>The image is {{label}}</p>
+            <a href="{% url 'starting-page' %}">Test Again</a>
+          </div>
+          {% endif %}
+
+        </form>
+      </div>
+      <div class="tabs__content">
+        <h2 class="tabs__title">Contact us</h2>
+        <div class="contact">
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+            <li><a href="#"><i class="fa-regular fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'DeepVision/script.js' %}"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
+</html>
